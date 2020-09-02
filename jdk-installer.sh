@@ -16,9 +16,10 @@ else
     echo "Usage: ./jdk-installer.sh <java_home/bin/> <priority>"
 fi
 
-for JAVA_CMD in $JAVA_HOME
+echo "JDK HOME is : " $JDK_HOME
+echo "PRIORITY is : " $PRIORITY
+
+for JAVA_CMD in $JDK_HOME/*
 do
-    echo $JAVA_CMD
+	update-alternatives --install /usr/bin/${JAVA_CMD##/*/} ${JAVA_CMD##/*/} $JAVA_CMD $PRIORITY
 done
-echo $JDK_HOME
-echo $PRIORITY
